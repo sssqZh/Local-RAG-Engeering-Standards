@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f7f5">
+  <title>规条 · 工程规范随身查</title>
+  <style>
+    :root{font-family:Inter,"Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;color:#172a25;background:#f4f7f5;font-synthesis:none;text-rendering:optimizeLegibility;--green:#176b52;--mint:#dff1e9;--line:#e3eae6;--muted:#6e7d77;--paper:#fff;--amber:#d58b36}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 82% 0%,#e2f1e8 0,transparent 34%),#f4f7f5}button,input,textarea{font:inherit}button{cursor:pointer}
+    .shell{max-width:1180px;margin:auto;padding:24px 34px 40px}.nav{height:48px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:11px;font-weight:750;letter-spacing:.02em}.mark{width:34px;height:34px;border-radius:11px;background:var(--green);color:#fff;display:grid;place-items:center;font-family:Georgia,serif;font-size:20px;box-shadow:0 5px 15px #176b5230}.nav-right{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:13px}.pulse{width:8px;height:8px;border-radius:50%;background:#58a783;box-shadow:0 0 0 4px #58a78320}
+    .hero{padding:44px 0 27px;display:flex;justify-content:space-between;align-items:end;gap:24px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;color:var(--green);font-weight:700;font-size:11px}.hero h1{font-size:clamp(32px,4vw,46px);line-height:1.18;letter-spacing:-.045em;margin:10px 0 12px;font-weight:750}.hero p{margin:0;color:#687871;font-size:15px;line-height:1.7;max-width:600px}.scope{border:1px solid #d6e5dc;background:#ffffff9c;border-radius:14px;padding:12px 15px;color:#567067;font-size:12px;line-height:1.65;max-width:245px}
+    .layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:18px;align-items:stretch}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 7px 24px #234c3810}.side{padding:21px}.card-title{font-size:15px;font-weight:720;display:flex;align-items:center;gap:9px}.step{height:25px;width:25px;border-radius:8px;background:var(--mint);color:var(--green);display:grid;place-items:center;font-size:12px;font-weight:750}.hint{font-size:12px;line-height:1.7;color:var(--muted);margin:8px 0 18px}.field{display:block;margin:0 0 13px}.field span{display:block;color:#52645d;font-size:12px;font-weight:650;margin:0 0 7px}.field input{width:100%;height:40px;border:1px solid #dce5e0;border-radius:10px;padding:0 11px;color:#263a33;outline:none;background:white}.field input:focus,.question:focus{border-color:#77ae96;box-shadow:0 0 0 3px #dff1e9}.drop{border:1px dashed #b7cec1;border-radius:12px;background:#f8fbf9;padding:17px 13px;text-align:center;color:#597167;font-size:12px;line-height:1.7;cursor:pointer;transition:.2s}.drop:hover,.drop.drag{border-color:var(--green);background:#f0f8f3}.drop strong{display:block;color:#24483b;font-size:13px}.drop input{display:none}.selected{font-size:11px;color:var(--green);margin-top:7px;overflow-wrap:anywhere}.check{display:flex;align-items:center;gap:8px;font-size:12px;color:#586a62;margin:13px 0}.check input{accent-color:var(--green)}.primary{width:100%;border:0;border-radius:10px;background:var(--green);color:white;padding:11px 14px;font-weight:650;transition:.2s}.primary:hover{background:#105940;transform:translateY(-1px)}.primary:disabled{opacity:.55;cursor:wait;transform:none}.status{min-height:20px;font-size:12px;color:var(--muted);margin-top:9px;line-height:1.5}.status.error{color:#b3493c}.status.ok{color:var(--green)}.divider{height:1px;background:var(--line);margin:20px 0}.fine{font-size:11px;color:#84928b;line-height:1.65;margin:13px 0 0}
+    .chat{min-height:620px;display:flex;flex-direction:column;overflow:hidden}.chat-head{padding:20px 23px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.chat-head small{color:var(--muted);font-size:12px}.chat-body{padding:25px;flex:1;overflow:auto;max-height:570px}.welcome{height:100%;min-height:350px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}.welcome-icon{height:58px;width:58px;border-radius:19px;background:var(--mint);display:grid;place-items:center;font-size:26px;color:var(--green);margin-bottom:17px}.welcome h2{font-size:19px;margin:0 0 8px}.welcome p{font-size:13px;color:var(--muted);line-height:1.7;margin:0;max-width:390px}.suggestions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px}.suggestion{background:#f7faf8;border:1px solid var(--line);border-radius:99px;padding:8px 12px;color:#536a60;font-size:11px;cursor:pointer}.suggestion:hover{border-color:#a6c8b5;color:var(--green)}.turn{margin:0 auto 22px;max-width:760px}.user-q{display:flex;justify-content:flex-end;margin-bottom:17px}.user-q span{max-width:82%;background:#e5f2eb;color:#244c3d;padding:11px 14px;border-radius:14px 14px 4px 14px;font-size:14px;line-height:1.6}.answer{font-size:14px;line-height:1.85;color:#243a32}.answer>:first-child{margin-top:0}.answer>:last-child{margin-bottom:0}.answer p{margin:0 0 11px}.answer h1,.answer h2,.answer h3,.answer h4,.answer h5,.answer h6{margin:18px 0 9px;line-height:1.45;font-weight:750;color:#1c3a2e}.answer h1{font-size:20px}.answer h2{font-size:17.5px}.answer h3{font-size:15.5px}.answer h4,.answer h5,.answer h6{font-size:14px}.answer ul,.answer ol{margin:0 0 11px;padding-left:23px}.answer li{margin:4px 0}.answer blockquote{margin:0 0 12px;padding:9px 13px;border-left:3px solid #a6c8b5;background:#f5faf7;border-radius:0 9px 9px 0;color:#4d635a}.answer code{background:#eef4f0;border:1px solid #e2ebe6;border-radius:5px;padding:1px 5px;font-size:12.5px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#1f4a3b}.answer pre{margin:0 0 12px;padding:13px 15px;background:#12332a;color:#e7f3ed;border-radius:10px;overflow:auto;line-height:1.65}.answer pre code{background:none;border:0;padding:0;color:inherit;font-size:12.5px}.answer table{border-collapse:collapse;margin:0 0 12px;font-size:12.5px;display:block;overflow:auto;max-width:100%}.answer th,.answer td{border:1px solid var(--line);padding:6px 10px;text-align:left;line-height:1.6;vertical-align:top}.answer th{background:#f4f9f6;color:#2d473c;font-weight:700;white-space:nowrap}.answer hr{border:0;border-top:1px solid var(--line);margin:15px 0}.answer a{color:var(--green);text-decoration:underline;text-underline-offset:2px}.answer strong{font-weight:750;color:#17382b}.answer-label{font-size:11px;color:var(--green);font-weight:700;letter-spacing:.04em;margin-bottom:6px}.citations{display:grid;gap:9px;margin-top:17px}.citation{border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:#fcfdfc}.citation-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.citation-title{font-size:12px;font-weight:700;color:#2d473c;line-height:1.55}.citation-tag{white-space:nowrap;font-size:10px;color:var(--green);background:#e8f4ed;padding:4px 8px;border-radius:99px}.citation p{font-size:12px;color:#5e6e66;line-height:1.75;margin:9px 0 0;white-space:pre-wrap}.citation a{display:inline-block;color:var(--green);font-size:11px;margin-top:8px;text-decoration:none}.citation a:hover{text-decoration:underline}.composer{border-top:1px solid var(--line);padding:17px 20px 19px;background:#fff}.compose-row{display:flex;gap:9px;align-items:end}.question{resize:vertical;min-height:47px;max-height:130px;flex:1;border:1px solid #dce5e0;border-radius:12px;padding:12px 13px;outline:none;color:#263a33;font-size:13px;line-height:1.5}.ask{height:45px;padding:0 19px;border:0;border-radius:11px;color:white;background:var(--green);font-size:13px;font-weight:650}.ask:hover{background:#105940}.ask:disabled{opacity:.5;cursor:wait}.compose-note{font-size:10px;color:#97a39d;margin:8px 2px 0}.thinking{font-size:12px;color:var(--muted);padding:8px 0}.footer{text-align:center;color:#8a9891;font-size:11px;margin:18px 0 0}
+    @media(max-width:800px){.shell{padding:16px}.hero{padding:34px 0 21px;align-items:start;flex-direction:column}.scope{max-width:none}.layout{grid-template-columns:1fr}.chat{min-height:540px}.chat-body{max-height:unset}.side{padding:18px}.nav-right span:last-child{display:none}}
+    @media(max-width:480px){.shell{padding:12px}.hero h1{font-size:34px}.chat-head{padding:16px}.chat-body{padding:18px 14px}.composer{padding:13px}.ask{padding:0 14px}.citation-top{align-items:start;flex-direction:column;gap:6px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="nav">
+      <div class="brand"><div class="mark">规</div><span>规条</span></div>
+      <div class="nav-right"><i class="pulse"></i><span id="serviceStatus">正在连接本地服务</span></div>
+    </header>
+    <section class="hero">
+      <div><div class="eyebrow">MOHURD · DOCUMENT ASSISTANT</div><h1>工程规范，随问随查。</h1><p>上传住建部行政规范性文件，快速定位相关条文。每个回答都附原文和出处，方便你回到文件核对。</p></div>
+      <div class="scope">当前资料范围<br><strong>住房和城乡建设部行政规范性文件</strong><br>暂不包含 GB、JGJ 等工程建设技术标准。</div>
+    </section>
+    <section class="layout">
+      <aside class="card side">
+        <div class="card-title"><span class="step">01</span>添加规范文件</div>
+        <p class="hint">上传从官网获取的文字型 PDF。系统会提取正文并建立本地检索索引。</p>
+        <label class="field"><span>文件名称</span><input id="docTitle" placeholder="例如：关于完善商品住房销售制度的通知"></label>
+        <div class="drop" id="dropArea" role="button" tabindex="0" aria-label="选择或拖入 PDF 文件"><strong>选择或拖入 PDF 文件</strong><span>单个文件最大 30 MB</span><div class="selected" id="fileName"></div></div>
+        <input id="pdfFile" type="file" accept="application/pdf,.pdf" hidden>
+        <label class="field" style="margin-top:14px"><span>官网原文链接（选填）</span><input id="sourceUrl" type="url" placeholder="https://www.mohurd.gov.cn/..."></label>
+        <label class="check"><input id="replaceExisting" type="checkbox"><span>替换同名文件的旧索引</span></label>
+        <button class="primary" id="uploadBtn">上传并建立索引</button>
+        <div class="status" id="uploadStatus"></div>
+        <div class="divider"></div>
+        <div class="card-title"><span class="step">02</span>开始查询</div>
+        <p class="fine">输入自然语言问题。系统会先检索条文，再调用已配置的模型 API 归纳回答；也可以直接查看检索到的原文。</p>
+      </aside>
+      <section class="card chat">
+        <div class="chat-head"><div class="card-title">规范问答</div><small id="modelStatus">准备就绪</small></div>
+        <div class="chat-body" id="chatBody">
+          <div class="welcome" id="welcome"><div class="welcome-icon">⌕</div><h2>从一条规范问题开始</h2><p>上传文件后，试着询问适用条件、责任主体、实施时间或具体要求。</p><div class="suggestions"><button class="suggestion">这份文件何时施行？</button><button class="suggestion">文件对预售资金有什么要求？</button><button class="suggestion">哪些项目优先选择现房销售？</button></div></div>
+        </div>
+        <form class="composer" id="queryForm"><div class="compose-row"><textarea class="question" id="question" rows="1" placeholder="输入你的问题，例如：这份文件何时施行？"></textarea><button class="ask" id="askBtn" type="submit">查询 ↗</button></div><div class="compose-note">回答仅依据已上传文件生成，请以原文和官方发布信息为准。</div></form>
+      </section>
+    </section>
+    <div class="footer">规条 · 让每个结论都能找到出处</div>
+  </main>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const fileInput = $('pdfFile');
+  const dropArea = $('dropArea');
+  const uploadStatus = $('uploadStatus');
+  const chatBody = $('chatBody');
+  let selectedFile = null;
+  const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  // Lightweight Markdown renderer. Input is escaped first; only safe tags are emitted.
+  function renderInline(src){
+    const codes = [];
+    let text = src.replace(/`([^`\n]+)`/g, (m, code) => { codes.push(code); return `\u0000c${codes.length - 1}\u0000`; });
+    const anchors = [];
+    text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (m, label, url) => {
+      const safeLabel = label.replace(/\u0000c(\d+)\u0000/g, (_, i) => `<code>${codes[+i]}</code>`);
+      anchors.push(`<a href="${url}" target="_blank" rel="noopener noreferrer">${safeLabel}</a>`);
+      return `\u0000a${anchors.length - 1}\u0000`;
+    });
+    text = text.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/(^|[^A-Za-z0-9_])__([^\s_](?:[^_\n]*[^\s_])?)__(?!\w)/g, '$1<strong>$2</strong>');
+    text = text.replace(/(^|[^*])\*([^\s*](?:[^*\n]*[^\s*])?)\*(?!\*)/g, '$1<em>$2</em>');
+    text = text.replace(/(^|[^A-Za-z0-9_])_([^\s_](?:[^_\n]*[^\s_])?)_(?!\w)/g, '$1<em>$2</em>');
+    text = text.replace(/~~([^~\n]+)~~/g, '<del>$1</del>');
+    text = text.replace(/\u0000a(\d+)\u0000/g, (m, i) => anchors[+i]);
+    return text.replace(/\u0000c(\d+)\u0000/g, (m, i) => `<code>${codes[+i]}</code>`);
+  }
+  function renderMarkdown(src){
+    const escaped = escapeHtml(String(src ?? '').replace(/\r\n?/g, '\n'));
+    if(!escaped.trim()) return '';
+    const lines = escaped.split('\n');
+    const out = [];
+    let para = [];
+    let list = null;
+    const flushPara = () => { if(para.length){ out.push(`<p>${para.map(renderInline).join('<br>')}</p>`); para = []; } };
+    const flushList = () => {
+      if(list){ out.push(`<${list.type}>${list.items.map(item => `<li>${renderInline(item)}</li>`).join('')}</${list.type}>`); list = null; }
+    };
+    const isTableSeparator = (line) => {
+      const trimmed = line.trim();
+      if(!trimmed.includes('|')) return false;
+      const cells = trimmed.replace(/^\|/, '').replace(/\|$/, '').split('|');
+      return cells.length > 0 && cells.every(cell => /^\s*:?-{2,}:?\s*$/.test(cell));
+    };
+    const splitRow = (line) => line.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(cell => cell.trim());
+    for(let i = 0; i < lines.length; i++){
+      const line = lines[i];
+      if(/^\s*```/.test(line)){
+        flushPara(); flushList();
+        const lang = line.match(/^\s*```\s*([\w+-]*)/)?.[1] || '';
+        const buffer = [];
+        for(i += 1; i < lines.length && !/^\s*```\s*$/.test(lines[i]); i += 1) buffer.push(lines[i]);
+        out.push(`<pre><code${lang ? ` class="language-${lang}"` : ''}>${buffer.join('\n')}</code></pre>`);
+        continue;
+      }
+      if(!line.trim()){ flushPara(); flushList(); continue; }
+      if(/^\s*([-*_])(\s*\1){2,}\s*$/.test(line)){ flushPara(); flushList(); out.push('<hr>'); continue; }
+      const heading = line.match(/^(#{1,6})\s+(.+?)\s*$/);
+      if(heading){ flushPara(); flushList(); const level = heading[1].length; out.push(`<h${level}>${renderInline(heading[2])}</h${level}>`); continue; }
+      if(/^\s*&gt;/.test(line)){
+        flushPara(); flushList();
+        const quoted = [];
+        for(; i < lines.length; i += 1){
+          const quote = lines[i].match(/^\s*&gt;\s?(.*)$/);
+          if(!quote) break;
+          quoted.push(quote[1]);
+        }
+        i -= 1;
+        out.push(`<blockquote>${quoted.map(renderInline).join('<br>')}</blockquote>`);
+        continue;
+      }
+      if(line.includes('|') && i + 1 < lines.length && isTableSeparator(lines[i + 1])){
+        flushPara(); flushList();
+        const header = splitRow(line);
+        const rows = [];
+        for(i += 2; i < lines.length && lines[i].includes('|') && lines[i].trim(); i += 1) rows.push(splitRow(lines[i]));
+        i -= 1;
+        const head = header.map(cell => `<th>${renderInline(cell)}</th>`).join('');
+        const body = rows.length ? `<tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${renderInline(cell)}</td>`).join('')}</tr>`).join('')}</tbody>` : '';
+        out.push(`<table><thead><tr>${head}</tr></thead>${body}</table>`);
+        continue;
+      }
+      const bullet = line.match(/^\s*[-*+]\s+(.*)$/);
+      const numbered = line.match(/^\s*\d+[.)]\s+(.*)$/);
+      if(bullet || numbered){
+        flushPara();
+        const type = bullet ? 'ul' : 'ol';
+        if(!list || list.type !== type){ flushList(); list = {type, items: []}; }
+        list.items.push((bullet || numbered)[1]);
+        continue;
+      }
+      flushList();
+      para.push(line.trim());
+    }
+    flushPara(); flushList();
+    return out.join('');
+  }
+  const setStatus = (el, text, kind='') => { el.textContent = text; el.className = `status ${kind}`; };
+  async function checkService(){try{const r=await fetch('/health');if(!r.ok)throw 0;$('serviceStatus').textContent='本地服务已连接'}catch{$('serviceStatus').textContent='服务连接失败'}}
+  checkService();
+  function chooseFile(file){
+    if(!file)return;
+    selectedFile=file;
+    $('fileName').textContent=file.name;
+    if(!$('docTitle').value)$('docTitle').value=file.name.replace(/\.pdf$/i,'');
+    setStatus(uploadStatus,'');
+  }
+  fileInput.addEventListener('change',()=>chooseFile(fileInput.files[0]));
+  dropArea.addEventListener('click',()=>fileInput.click());
+  dropArea.addEventListener('keydown',(e)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fileInput.click()}});
+  dropArea.addEventListener('dragenter',(e)=>{e.preventDefault();dropArea.classList.add('drag')});
+  dropArea.addEventListener('dragover',(e)=>{e.preventDefault();dropArea.classList.add('drag')});
+  dropArea.addEventListener('dragleave',(e)=>{if(!dropArea.contains(e.relatedTarget))dropArea.classList.remove('drag')});
+  dropArea.addEventListener('drop',(e)=>{e.preventDefault();dropArea.classList.remove('drag');chooseFile(e.dataTransfer.files[0])});
+  $('uploadBtn').addEventListener('click',async()=>{
+    const file=selectedFile,title=$('docTitle').value.trim();
+    if(!file){setStatus(uploadStatus,'请先选择 PDF 文件','error');return}
+    if(!title){setStatus(uploadStatus,'请填写文件名称','error');return}
+    const data=new FormData();data.append('file',file);data.append('standard_title',title);data.append('source_url',$('sourceUrl').value.trim());data.append('replace_existing',$('replaceExisting').checked?'true':'false');
+    const btn=$('uploadBtn');btn.disabled=true;btn.textContent='正在解析…';setStatus(uploadStatus,'正在提取 PDF 文字并建立索引…');
+    try{const r=await fetch('/documents/upload',{method:'POST',body:data});const result=await r.json();if(!r.ok)throw new Error(result.detail||'上传失败');setStatus(uploadStatus,`完成：${result.chunks_added} 个片段已入库，共 ${result.pages} 页。${result.old_chunks_removed?`已替换 ${result.old_chunks_removed} 个旧片段。`:''}`,'ok');$('modelStatus').textContent='资料已就绪'}catch(e){setStatus(uploadStatus,e.message,'error')}finally{btn.disabled=false;btn.textContent='上传并建立索引'}
+  });
+  function addTurn(question,answer,citations){
+    $('welcome')?.remove();const turn=document.createElement('article');turn.className='turn';
+    const citationHtml=citations.length?`<div class="citations">${citations.map((c,i)=>`<div class="citation"><div class="citation-top"><div class="citation-title">${escapeHtml(c.standard_title)}</div><span class="citation-tag">${escapeHtml(c.clause_no)} · 第 ${escapeHtml(c.page_no||'?')} 页</span></div><p>${escapeHtml(c.quote)}</p>${c.source_url?`<a href="${escapeHtml(c.source_url)}" target="_blank" rel="noopener noreferrer">打开官方来源 ↗</a>`:''}</div>`).join('')}</div>`:'<div class="fine">当前资料中没有检索到相关原文。</div>';
+    turn.innerHTML=`<div class="user-q"><span>${escapeHtml(question)}</span></div><div class="answer-label">规条回答</div><div class="answer">${renderMarkdown(answer)}</div>${citationHtml}`;chatBody.appendChild(turn);chatBody.scrollTop=chatBody.scrollHeight;
+  }
+  $('queryForm').addEventListener('submit',async(e)=>{
+    e.preventDefault();const question=$('question').value.trim();if(question.length<2)return;
+    const btn=$('askBtn');btn.disabled=true;btn.textContent='检索中…';const placeholder=document.createElement('div');placeholder.className='thinking';placeholder.textContent='正在查找相关条文…';chatBody.appendChild(placeholder);chatBody.scrollTop=chatBody.scrollHeight;
+    try{const r=await fetch('/query',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,top_k:5})});const result=await r.json();if(!r.ok)throw new Error(result.detail||'查询失败');placeholder.remove();addTurn(question,result.answer,result.citations||[]);$('question').value='';if(result.llm_enabled){$('modelStatus').textContent=result.verified?'回答与引用编号校验通过':'请核对回答引用'}else{$('modelStatus').textContent='检索已完成 · 模型 API 未启用'}}catch(err){placeholder.textContent=err.message;placeholder.style.color='#b3493c'}finally{btn.disabled=false;btn.textContent='查询 ↗'}
+  });
+  document.querySelectorAll('.suggestion').forEach(b=>b.addEventListener('click',()=>{$('question').value=b.textContent;$('question').focus()}));
+  $('question').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('queryForm').requestSubmit()}});
+</script>
+</body>
+</html>
